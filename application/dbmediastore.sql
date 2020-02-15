@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Feb 14, 2020 at 06:15 AM
+-- Generation Time: Feb 15, 2020 at 06:48 PM
 -- Server version: 5.7.26
 -- PHP Version: 7.2.18
 
@@ -38,7 +38,14 @@ CREATE TABLE IF NOT EXISTS `articles` (
   `UserId` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `UserId` (`UserId`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `articles`
+--
+
+INSERT INTO `articles` (`id`, `title`, `content`, `createdAt`, `updatedAt`, `UserId`) VALUES
+(1, 'Hi', 'My first Article!.\nWhat should I put in here?\nHmm. Lets see', '2020-02-15 18:47:24', '2020-02-15 18:47:24', 1);
 
 -- --------------------------------------------------------
 
@@ -63,7 +70,7 @@ CREATE TABLE IF NOT EXISTS `sessions` (
 --
 
 INSERT INTO `sessions` (`id`, `sid`, `data`, `createdAt`, `updatedAt`) VALUES
-(1, 'jGwwfHSC12ksAH-9MHxoVMU7EiXz-WZo', '{\"cookie\":{\"originalMaxAge\":604800000,\"expires\":\"2020-02-21T06:06:34.580Z\",\"httpOnly\":true,\"path\":\"/\"},\"flash\":{}}', '2020-02-14 05:54:38', '2020-02-14 06:06:34');
+(1, 'cIBVsCraqiQg0qFCo6v3ltUSMR-yTNmn', '{\"cookie\":{\"originalMaxAge\":604799999,\"expires\":\"2020-02-22T18:47:34.434Z\",\"httpOnly\":true,\"path\":\"/\"},\"flash\":{},\"passport\":{\"user\":1}}', '2020-02-15 03:51:42', '2020-02-15 18:47:34');
 
 -- --------------------------------------------------------
 
@@ -89,7 +96,14 @@ CREATE TABLE IF NOT EXISTS `users` (
   `createdAt` datetime NOT NULL,
   `updatedAt` datetime NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `users`
+--
+
+INSERT INTO `users` (`id`, `name`, `email`, `username`, `hashedPassword`, `provider`, `salt`, `facebookUserId`, `twitterUserId`, `twitterKey`, `twitterSecret`, `github`, `openId`, `createdAt`, `updatedAt`) VALUES
+(1, 'Viral Amin', 'vamin@mail.sfsu.edu', 'vamin', 'jM4urI2s86AwNClp1hOcvL/V783XFzun5BvAp/nG0ut1Dr9qGn7WPJKF9wJXjgCf3Ggv/fVuV0Hv3y8rkdXbMw==', 'local', 'YMWZmRT84O5l76D/RRBvBw==', NULL, NULL, NULL, NULL, NULL, NULL, '2020-02-15 16:32:21', '2020-02-15 16:32:21');
 
 --
 -- Constraints for dumped tables
