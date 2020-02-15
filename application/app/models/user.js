@@ -42,7 +42,7 @@ module.exports = function(sequelize, DataTypes) {
                         return '';
                     }
 					salt = new Buffer(salt, 'base64');
-					return crypto.pbkdf2Sync(password, salt, 10000, 64).toString('base64');
+					return crypto.pbkdf2Sync(password, salt, 10000, 64, 'sha512').toString('base64');
 				}
 			},
 			associate: function(models) {
