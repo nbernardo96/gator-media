@@ -3,16 +3,16 @@
         <li>
             <a class="brand" ui-sref="home">MEAN - A Modern Stack</a>
         </li>
+        <li><a class="nav-home" ui-sref="home">Home</a>
+        </li>
         <li data-ng-repeat="item in menu" data-ng-show="global.user" ui-route="/{{item.link}}" ng-class="{active: $uiRoute}">
             <a ui-sref="{{item.state}}">{{item.title}}</a>
-        </li>
     </ul>
     <ul class="nav pull-right" data-ng-hide="global.authenticated">
         <li><a ui-sref="SignUp">Signup</a>
         </li>
         <li class="divider-vertical"></li>
         <li><a ui-sref="SignIn">Signin</a>
-        </li>
     </ul>
     <ul class="nav pull-right" data-ng-show="global.authenticated">
         <li class="dropdown">

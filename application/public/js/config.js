@@ -43,6 +43,30 @@ angular.module('mean').config(['$stateProvider','$urlRouterProvider', function($
         .state('404',{
             templateUrl: 'views/404.html'
         })
+        .state('about-ahmad',{
+            url : '/about-ahmad',
+            templateUrl: 'views/about-team/about-ahmad.html'
+        })
+        .state('about-felipe',{
+            url : '/about-felipe',
+            templateUrl: 'views/about-team/about-felipe.html'
+        })
+        .state('about-pak',{
+            url : '/about-pak',
+            templateUrl: 'views/about-team/about-pak.html'
+        })
+        .state('about-viral',{
+            url : '/about-viral',
+            templateUrl: 'views/about-team/about-viral.html'
+        })
+        .state('about-nicole',{
+            url : '/about-nicole',
+            templateUrl: 'views/about-team/about-nicole.html'
+        })
+        .state('about-olivia',{
+            url : '/about-olivia',
+            templateUrl: 'views/about-team/about-olivia.html'
+        })
 }
 ]);
 

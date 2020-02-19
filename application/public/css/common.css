@@ -1,11 +1,15 @@
 .navbar .nav>li>a.brand {
     padding-left:20px;
-    margin-left:0
+    margin-left:0;
 }
 
 .content {
     margin-top:50px;
     width:100%
+}
+
+.navbar .nav>li>a.nav-home {
+    color: white;
 }
 
 footer {
