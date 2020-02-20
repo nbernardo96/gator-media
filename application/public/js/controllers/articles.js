@@ -1,4 +1,5 @@
 angular.module('mean.articles').controller('ArticlesController', ['$scope', '$stateParams', 'Global', 'Articles', '$state', function ($scope, $stateParams, Global, Articles, $state) {
+    'use strict';
     $scope.global = Global;
 
     $scope.create = function() {
@@ -8,7 +9,7 @@ angular.module('mean.articles').controller('ArticlesController', ['$scope', '$st
         });
 
         article.$save(function(response) {
-            $state.go('viewArticle',{articleId : response.id})
+            $state.go('viewArticle',{articleId : response.id});
         });
 
         this.title = "";
@@ -38,7 +39,7 @@ angular.module('mean.articles').controller('ArticlesController', ['$scope', '$st
         }
         article.updated.push(new Date().getTime());
         article.$update(function() {
-        $state.go('viewArticle',{articleId : article.id})
+        $state.go('viewArticle',{articleId : article.id});
 
         });
     };

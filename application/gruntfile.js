@@ -36,6 +36,12 @@ module.exports = function(grunt) {
             options: {
                 jshintrc: '.jshintrc',
                 reporter: require('jshint-stylish')
+            },
+            grunt: {
+                options: {
+                    // "maxlen": false,
+                    "strict": false
+                }
             }
         },
         copy: {
