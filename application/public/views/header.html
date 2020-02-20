@@ -3,12 +3,14 @@
         <li>
             <a class="brand" ui-sref="home">MEAN - A Modern Stack</a>
         </li>
-        <li><a class="nav-home" ui-sref="home">Home</a>
+        <li><a class="nav-home" ui-sref="home" href="/">Home</a>
         </li>
         <li data-ng-repeat="item in menu" data-ng-show="global.user" ui-route="/{{item.link}}" ng-class="{active: $uiRoute}">
             <a ui-sref="{{item.state}}">{{item.title}}</a>
     </ul>
     <ul class="nav pull-right" data-ng-hide="global.authenticated">
+        <li><a ui-sref="About" href="/about">About</a>
+        </li>
         <li><a ui-sref="SignUp">Signup</a>
         </li>
         <li class="divider-vertical"></li>
