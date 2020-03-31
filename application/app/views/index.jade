@@ -4,3 +4,28 @@ block content
   section(ui-view)
   script(type="text/javascript").
     window.user = !{user};
+
+  form.search-form(action='/' method="post")
+    i.fas.fa-search
+    input(type='search', name='term', ,placeholder='video name, audio name etc')
+    input(type='submit', value='submit', href = '/search')
+    .dropdown
+      button.dropbtn Dropdown
+      .dropdown-content
+        a(href='#') dog
+        a(href='#') sun
+        a(href='#') forest
+        a(href='#') ocean
+        a(href='#') cat
+        a(href='#') mountain
+  h1 result
+  p
+    -for(var i = 0; i<item.length; ++i){
+    -if(title == ""){
+    p=""
+    li= "title: " + item[i].mediaName
+    p="category: " + item[i].category
+    img(src= item[i].url, alt=item[i].category, width='42', height='42')
+    -}
+    -}
+
