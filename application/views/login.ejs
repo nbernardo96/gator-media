@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+</head>
+<body>
+    <a href='/'> back </a>
+    <h1> Login </h1>
+    <form action="/users/login" method="POST">
+        <div>
+            <label> Email </label>
+            <input type="email" id="email" name="email" required>
+        </div>
+        <div>
+            <label> Password </label>
+            <input type="password" id="password" name="password" required>
+        </div>
+        <button type='submit'> Login </button>
+    </form>
+    <a href="/users/register">not register yet?</a>
+</body>
+</html>
