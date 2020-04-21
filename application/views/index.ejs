@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <ul class="nav navbar-nav">
+        <li><a href='/users/login'>Login </a></li>
+        <a> | </a>
+        <li><a href='/users/register'>Register </a></li>
+        <li><form class="search-form" action="/" method="post">
+            <input type="search" name="term" ,placeholder="video name, audio name etc" />
+            <select name='category'>
+                <option>All categories</option>
+                <% for(var i=0; i<category.length; i++) {%>
+                    <option><%= category[i].category %></option>
+                <% } %>
+            </select>
+            <input type="submit" value="submit" href="/search" />
+        </form></li>
+        <li><form action="/logout?_method=DELETE" method="POST">
+            <button type="submit" onclick="logoutMessage()"> Logout </button>
+        </form></li>
+    </ul>
+    <script>
+	    function logoutMessage() {
+		    alert("successful log out!");
+	    }
+    </script>
+
+
+    <h1> result </h1>
+    <p>
+        <% for(var i=0; i<item.length; i++) {%>
+            <% if(title == "" && searchCate == "All categories") { %>
+                <p> </p>
+                <li>title : <%= item[i].mediaName %></li>
+                <img src=<%= item[i].url %> alt=<%= item[i].category %> width="42" height="42">
+                <a href="/media/<%= item[i].id %>"> Detail </a>
+            <%} else if(title == "" && searchCate != "All categories"){ %>
+                <% if(item[i].category == searchCate) { %>
+                    <p> </p>
+                    <li>title : <%= item[i].mediaName %></li>
+                    <img src=<%= item[i].url %> alt=<%= item[i].category %> width="42" height="42">
+                    <a href="/media/<%= item[i].id %>"> Detail </a>
+                <% } %>
+            <% } else if(item[i].category == searchCate){ %>
+                <p> </p>
+                <li>title : <%= item[i].mediaName %></li>
+                <img src=<%= item[i].url %> alt=<%= item[i].category %> width="42" height="42">
+                <a href="/media/<%= item[i].id %>"> Detail </a>
+            <% } %>
+        <% } %>
+    </p>
+
+  </body>
+</html>
