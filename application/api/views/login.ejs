@@ -1,22 +1,111 @@
-<!DOCTYPE html>
-<html>
 <head>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
+  <title>Login</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel='stylesheet' href='/stylesheets/home-page.css' />
+  <link rel='stylesheet' href='/stylesheets/bootstrap-4.css' />
 </head>
-<body>
-    <a href='/'> back </a>
-    <h1> Login </h1>
-    <form action="/users/login" method="POST">
+<!-- Navbar code below -->
+<bodyRegister>
+
+    <nav class="navbar navbar-expand-lg navbar-dark gatormedia-nav">
         <div>
-            <label> Email </label>
-            <input type="email" id="email" name="email" required>
+          <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+            <li class="navbar-brand">Gator Media</li>
+            <li class="nav-item active">
+              <a class="nav-link home-btn" href="/">Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li><form action="/" method="post">
+                <input type="search" class="search-container" name="term" ,placeholder="video name, audio name etc" />
+             <!-- Missing Nav code -->
+                <input type="submit" class="search-btn" value="Search" href="/search" />
+            </form></li>
+            <li><button class="sell-btn" onclick="window.location.href = '/users/sell'">Sell/Post</button></li>
+            <li class="about-btn"><a href='/users/about' class=" nav-link">About</a></li>
+            <li class="login-btn"><a href='/users/login' class=" nav-link">Login</a></li>
+            <li class="register-btn"><a href='/users/register' class="nav-link">Register</a></li>
+            <!-- <li><form action="/logout?_method=DELETE" method="POST">
+                <button class="logout-btn" type="submit" onclick="logoutMessage()"> Logout </button>
+            </form></li> -->
+          </ul>
+          <script>
+            function logoutMessage() {
+                alert("successful log out!");
+            }
+        </script>
         </div>
-        <div>
-            <label> Password </label>
-            <input type="password" id="password" name="password" required>
-        </div>
-        <button type='submit'> Login </button>
-    </form>
-    <a href="/users/register">not register yet?</a>
-</body>
-</html>
+      </nav>
+    </bodyRegister>
+   <!-- Login code below -->
+   <style>
+       .login,
+   .image {
+     min-height: 100vh;
+   }
+
+   .bg-image {
+     background-image: url('/images/csc648img.jpg');
+     background-size: cover;
+     background-position: center center;
+   }
+   body {
+     background-color: #F2F2F2;
+
+
+   </style>
+   <body>
+   <div class="container-fluid">
+       <div class="row no-gutter">
+           <!-- The image half -->
+           <div class="col-md-6 d-none d-md-flex bg-image"></div>
+
+
+           <!-- The content half -->
+           <div class="col-md-6 bg-light">
+               <div class="login d-flex align-items-center py-5">
+
+                   <!-- Demo content-->
+                   <div class="container">
+                       <div class="row">
+                           <div class="col-lg-10 col-xl-7 mx-auto">
+                               <h3 class="display-4" style="color:#000000">Welcome</h3>
+                               <!-- work on this-->
+
+       <form action="/users/login" method="POST">
+           <div class="control-group">
+   <!--            <label for="email" class="control-label">Email</label>-->
+
+               <div class="form-group mb-3">
+                   <input id="email" type="email" name="email" placeholder="Email address" autofocus=""
+                          class="form-control rounded-pill border-0 shadow-sm px-4"  required>
+               </div>
+           </div>
+           <div class="form-group mb-3">
+   <!--            <label for="password" class="control-label">Password</label>-->
+
+               <div class="form-group mb-3">
+                   <input id="password" type="password" name="password" placeholder="Password"
+                          class="form-control rounded-pill border-0 shadow-sm px-4 text-primary"
+                          required>
+               </div>
+           </div>
+           <div class="custom-control custom-checkbox mb-3">
+                                       <input id="customCheck1" type="checkbox"  class="custom-control-input" >
+                                       <label for="customCheck1" class="custom-control-label">Remember password</label>
+                                   </div>
+           <div class="form-group mb-3">
+               <button type="submit" class="btn btn-primary btn-block text-uppercase mb-2 rounded-pill shadow-sm" style="color:#000000">Sign in</button>
+   <a href="" style="color:#000000">Forgot Password?</a>
+           </div>
+       </form>
+
+                           </div>
+                       </div>
+                   </div><!-- End -->
+
+               </div>
+           </div><!-- End -->
+
+       </div>
+   </div>
+   </body>
