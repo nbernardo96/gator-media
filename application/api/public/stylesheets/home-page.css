@@ -1,0 +1,86 @@
+.gatormedia-nav {
+    background: #333333;
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+}
+
+.search-container {
+    margin-top: 5px;
+    margin-left: 180px;
+    border-radius: 7px;
+    width: 600px;
+    height: 27px;
+    padding: 2px;
+
+    background: white;
+    border: #333333;
+}
+
+.category-dropdwn {    
+    background: #333333;
+    border-color: white;
+    color: white;
+
+    margin-left: 10px;
+}
+
+.search-btn {
+    background: rgb(255, 255, 255);
+    color: black;
+
+    border-radius: 10px;
+    width: 70px;
+    margin-left: 10px;
+    padding: 0px;
+}
+
+.home-btn {
+    background: #333333;
+    margin-left: 30px;
+    width: 30px;
+}
+
+.sell-btn {
+    border-radius: 10px;
+    margin-top: 5px;
+    margin-left: 50px;
+    width: 90px;
+    
+
+    background: rgb(141, 255, 131);
+    border-color: #333333;
+}
+
+.sell-text {
+    color: black;
+}
+
+.about-btn {
+    margin-left: 50px;
+    background: #333333;
+}
+
+.login-btn {
+    margin-left: 40px;
+    background: #333333;
+}
+
+.register-btn {
+    margin-left: 40px;
+    background: #333333;
+}
+
+.logout-btn {
+    margin-right: 10px;
+    margin-top: 5px;
+
+    background: #333333;
+    border: #333333;
+    color: white;
+}
+
+.container-home {
+    z-index: 1;
+}
