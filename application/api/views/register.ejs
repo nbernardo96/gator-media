@@ -74,12 +74,12 @@ body {
                                 </div>
                                 <div class="form-group mb-3">
                                     <div class="form-group mb-3">
-                                        <input id="password" type="password" name="password" placeholder="Password"
+                                        <input id="password" type="password" pattern="^\S{6,}$" onchange="this.setCustomValidity(this.validity.patternMismatch ? 'Must have at least 6 characters' : ''); if(this.checkValidity()) form.passwordConfirm.pattern = this.value;" title= "Password must have at least 6 characters!" name="password" placeholder="Password"
                                                class="form-control rounded-pill border-0 shadow-sm px-4 text-primary" maxlength="40"
                                                required>
                                     </div>
                                     <div class="form-group mb-3">
-                                        <input id="passwordConfirm" type="password" name="password" placeholder="Confirm Password"
+                                        <input id="passwordConfirm" type="password" pattern="^\S{6,}$" onchange="this.setCustomValidity(this.validity.patternMismatch ? 'Please enter the same Password as above' : '');" title= "Password must be the same as above!" name="passwordConfirm" placeholder="Confirm Password"
                                                class="form-control rounded-pill border-0 shadow-sm px-4 text-primary" maxlength="40"
                                                required>
                                     </div>
@@ -91,7 +91,7 @@ body {
                                 </div>
                                 <div class="form-group mb-3">
                                  <script src="https://www.google.com/recaptcha/api.js" async defer ></script>
-                                 <div id="recaptcha" class="g-recaptcha" data-sitekey="6LcdMK8UAAAAAA17_0eTK0rQGipu2TwAIUwr-VVA" ></div>
+                                 <div class="g-recaptcha" data-sitekey="6LcdMK8UAAAAAA17_0eTK0rQGipu2TwAIUwr-VVA" data-callback="correctCaptcha"></div>
                                 </div>
                                 <div class="form-group mb-3">
                                     <button type="submit" class="btn btn-primary btn-block text-uppercase mb-2 rounded-pill shadow-sm" style="color:#000000">Sign up</button>
