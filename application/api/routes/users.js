@@ -14,7 +14,27 @@ checkNotAuthenticated = (req, res, next) => {
 	}
 	return next()
 }
-
+router.get('/about', function(req, res, next){
+res.render('about', {title: 'Hi'})
+});
+router.get('/about-ahmad', function(req, res, next){
+res.render('about-ahmad', {title: 'Hi'})
+});
+router.get('/about-felipe', function(req, res, next){
+res.render('about-felipe', {title: 'Hi'})
+});
+router.get('/about-nicole', function(req, res, next){
+res.render('about-nicole', {title: 'Hi'})
+});
+router.get('/about-olivia', function(req, res, next){
+res.render('about-olivia', {title: 'Hi'})
+});
+router.get('/about-pak', function(req, res, next){
+res.render('about-pak', {title: 'Hi'})
+});
+router.get('/about-viral', function(req, res, next){
+res.render('about-viral', {title: 'Hi'})
+});
 /* GET users listing. */
 router.get('/login', users.getLogin);
 router.post('/login', users.login);
