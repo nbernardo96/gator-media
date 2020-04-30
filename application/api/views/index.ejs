@@ -4,30 +4,36 @@
     <link rel='stylesheet' href='/stylesheets/style.css' />
     <link rel='stylesheet' href='/stylesheets/bootstrap-4.css' />
     <link rel='stylesheet' href='/stylesheets/home-page.css' />
-
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet"/>
   </head>
   <body>
     <nav class="navbar navbar-expand-lg navbar-dark gatormedia-nav">
         <div>          
           <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-            <li class="navbar-brand">Gator Media</li>
-            <li class="nav-item active">
-              <a class="nav-link home-btn" href="/">Home <span class="sr-only">(current)</span></a>
+            <li class="navbar-brand">
+                <a class="nav-link home-btn" href="/">Gator Media<span class="sr-only">(current)</span></a>
             </li>
-            <li><form action="/" method="post">
-                <input type="search" class="search-container" name="term" ,placeholder="video name, audio name etc" />
-                <select name='category' class="category-dropdwn">
-                    <option class="category-dropdwn">All categories</option>
+            <li>
+                <div class="search-wrapper">
+                    <form action="/" method="post">
+                        <select name='category' class="category-dropdown">
+                            <option class="category-dropdwn">All categories</option>
                     <% for(var i=0; i<category.length; i++) {%>
                         <option><%= category[i].category %></option>
                     <% } %>
-                </select>
-                <input type="submit" class="search-btn" value="Search" href="/search" />
-            </form></li>
+                        </select>
+                    <input type="search" class="search-container" name="term" ,placeholder="video name, audio name etc" />
+                    <input type="submit" class="search-btn" value="Search" href="/search"/>
+                </form>
+                </div>
+                
+            </li>
             <li><button class="sell-btn" onclick="window.location.href = '/users/sell'">Sell/Post</button></li>
-            <li class="about-btn"><a href='/users/about' class=" nav-link">About</a></li>
-            <li class="login-btn"><a href='/users/login' class=" nav-link">Login</a></li>
-            <li class="register-btn"><a href='/users/register' class="nav-link">Register</a></li>
+            <div class="navbar-links">
+                <li class="about-btn"><a href='/users/about' class=" nav-link">About</a></li>
+                <li class="login-btn"><a href='/users/login' class=" nav-link">Login</a></li>
+                <li class="register-btn"><a href='/users/register' class="nav-link">Register</a></li>
+            </div>
             <!-- <li><form action="/logout?_method=DELETE" method="POST">
                 <button class="logout-btn" type="submit" onclick="logoutMessage()"> Logout </button>
             </form></li> -->
