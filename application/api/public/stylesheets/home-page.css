@@ -72,9 +72,10 @@ select {
 }
 
 .home-btn {
-    background: #333333;
     margin-left: 50px;
     width: 100%;
+    font-size: 30px;
+    padding: 0px;
 }
 
 .sell-btn {
@@ -92,19 +93,25 @@ select {
     color: black;
 }
 
+a {
+    border: 1px solid rgb(230, 229, 229);
+    border-radius: 7px;
+    background: rgb(138, 137, 137);
+ }
+
 .about-btn {
     margin-left: 70px;
-    background: #333333;
+    font-size: 18px;    
 }
 
 .login-btn {
     margin-left: 70px;
-    background: #333333;
+    font-size: 18px;
 }
 
 .register-btn {
     margin-left: 70px;
-    background: #333333;
+    font-size: 18px;
 }
 
 .logout-btn {
