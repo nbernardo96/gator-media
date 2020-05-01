@@ -1,16 +1,28 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel='stylesheet' href='/stylesheets/media.css' />
+    <link rel='stylesheet' href='/stylesheets/bootstrap-4.css' />
 </head>
 <body>
-    <h1>Media Detail</h1>
+    <h1>Title: <%= media.mediaName %> by (Insert Seller Name)</h1>
     <p>
-        <h4>id: <%= media.id %></h4>
-        <h4>name: <%= media.mediaName %></h4>
-        <h4>category: <%= media.category %></h4>
-        <h4>url: <%= media.url %></h4>
+        <div class="media-img">
+            <img src="https://images.pexels.com/photos/1108099/pexels-photo-1108099.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=300&w=600" alt="dog">
+        </div>
+        <div class="media-info">
+            <p></p>
+            <p>Description: This is a photo taken somewhere</p>
+            <button class="contact-btn">Contact</button>
+        </div>
+        <div class="media-about">
+            <h4>id: <%= media.id %></h4>
+            <h4>name: <%= media.mediaName %></h4>
+            <h4>category: <%= media.category %></h4>
+            <h4>url: <%= media.url %></h4>
+        </div>
     </p>
-    <a href='/'> back </a>
+        <a class="back-btn" href='/'> Back </a>
 </body>
 </html>
