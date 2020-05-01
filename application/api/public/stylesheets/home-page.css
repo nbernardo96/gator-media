@@ -68,7 +68,7 @@
 }
 
 .register-btn {
-    margin-left: 4d0px;
+    margin-left: 40px;
     background: #333333;
 }
 
@@ -79,4 +79,8 @@
     background: #333333;
     border: #333333;
     color: white;
+}
+
+.container-home {
+    z-index: 1;
 }
