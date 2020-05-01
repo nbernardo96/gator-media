@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+</head>
+<body>
+    <h1>Media Detail</h1>
+    <h2><%= userID %></h2>
+    <p>
+        <h4>name: <%= media.mediaName %></h4>
+        <h4>description: <%= media.description %> </h4>
+        <h4>category: <%= media.category %></h4>
+        <h4>is it Free?: <%= media.isFree %></h4>
+        <% if (media.isFree == "True") { %>
+            <a>Download </a>
+        <% } else if(media.isFree == "False"){ %>
+            <p>Contact Owner <p>
+            <form action="/media/contact" method="POST">
+                <textarea type="text" name="sendContent" placeholder="message owner"></textarea>
+                <button type="submit" name="buttonValue" value="<%= media.user_id %>"> Send </button>
+            </form>
+        <% } %>
+    </p>
+    <a href='/'> back </a>
+
+</body>
+</html>

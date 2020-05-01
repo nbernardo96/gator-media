@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+</head>
+<body>
+<h1>User Dashboard</h1>
+<h2>--user : <%= user.email %></h2>
+<p>
+    <% for(var i=0; i<item.length; i++) {%>
+        <h4>----item: <%= i %>----</h4>
+        <h4>name: <%= item[i].mediaName %></h4>
+        <h4>description: <%= item[i].description %> </h4>
+        <h4>category: <%= item[i].category %></h4>
+        <h4>is it Free?: <%= item[i].status %></h4>
+        <br>
+        <br>
+    <% } %>
+    <h3>Message from others</h3>
+    <% for(var i=0; i<message.length; i++) {%>
+        <h4>----message: <%= i %>----</h4>
+        <h4>content: <%= message[i].message %></h4>
+        <h4>from: <%= message[i].sender_id %> </h4>
+    <% } %>
+</p>
+<a href='/'> back </a>
+
+</body>
+</html>

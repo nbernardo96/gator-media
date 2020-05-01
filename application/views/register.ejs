@@ -1,0 +1,113 @@
+<head>
+  <title>Register</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel='stylesheet' href='/stylesheets/home-page.css' />
+  <link rel='stylesheet' href='/stylesheets/homeRegister.css' />
+  <link rel='stylesheet' href='/stylesheets/bootstrap-4.css' />
+
+</head>
+<!-- Navbar code below -->
+<div class="nav">
+  <input type="checkbox" id="nav-check">
+  <div class="nav-header">
+    <div class="nav-title">
+      Gator Media
+    </div>
+  </div>
+  <div class="nav-btn ">
+    <label for="nav-check">
+      <span></span>
+      <span></span>
+      <span></span>
+    </label>
+  </div>
+
+  <div class="nav-links ">
+    <a href="/">Home</a>
+  </div>
+  <div class="nav-links" style="margin-left: auto !important">
+      <a href="/users/about">About</a>
+      <a href="/users/login">Login</a>
+      <a href="/users/register">Register</a>
+    </div>
+</div>
+<!-- Register code below -->
+<style>
+    .login,
+.image {
+  min-height: 100vh;
+}
+.bg-image {
+  background-image: url('/images/csc648img.jpg');
+  background-size: cover;
+  background-position: center center;
+}
+body {
+  background-color: #F2F2F2;
+  }
+
+</style>
+
+<body>
+<div class="container-fluid">
+    <div class="row no-gutter">
+        <!-- The image half -->
+        <div class="col-md-6 d-none d-md-flex bg-image"></div>
+        <!-- The content half -->
+        <div class="col-md-6 bg-light">
+            <div class="login d-flex align-items-center py-5">
+                <!-- Demo content-->
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-10 col-xl-7 mx-auto">
+                            <h3 class="display-4" style="color:#000000">Welcome</h3>
+                            <!-- work on this-->
+                            <form action="/users/register"   method="POST">
+
+                                <div class="control-group">
+                                    <!--            <label for="email" class="control-label">Email</label>-->
+                                    <div class="form-group mb-3">
+                                        <input id="email" type="email" name="email" placeholder="Email address" autofocus=""
+                                               class="form-control rounded-pill border-0 shadow-sm px-4"  pattern=".+@sfsu.edu"  maxlength="40" title="Email must contain '@sfsu.edu' " required>
+                                    </div>
+                                </div>
+                                <div class="form-group mb-3">
+                                    <div class="form-group mb-3">
+                                        <input id="password" type="password" pattern="^\S{6,}$" onchange="this.setCustomValidity(this.validity.patternMismatch ? 'Must have at least 6 characters' : ''); if(this.checkValidity()) form.passwordConfirm.pattern = this.value;" title= "Password must have at least 6 characters!" name="password" placeholder="Password"
+                                               class="form-control rounded-pill border-0 shadow-sm px-4 text-primary" maxlength="40"
+                                               required>
+                                    </div>
+                                    <div class="form-group mb-3">
+                                        <input id="passwordConfirm" type="password" pattern="^\S{6,}$" onchange="this.setCustomValidity(this.validity.patternMismatch ? 'Please enter the same Password as above' : '');" title= "Password must be the same as above!" name="passwordConfirm" placeholder="Confirm Password"
+                                               class="form-control rounded-pill border-0 shadow-sm px-4 text-primary" maxlength="40"
+                                               required>
+                                    </div>
+                                </div>
+                                <div class="custom-control custom-checkbox mb-3" >
+                                    <input id="customCheck1" type="checkbox"  class="custom-control-input" required>
+                                    <label for="customCheck1" class="custom-control-label" style="color:#000000">By registering with Gator Media, you accept our Terms of use.</label>
+
+                                </div>
+                                <div class="form-group mb-3">
+                                 <script src="https://www.google.com/recaptcha/api.js" async defer ></script>
+                                 <div class="g-recaptcha" data-sitekey="6LcdMK8UAAAAAA17_0eTK0rQGipu2TwAIUwr-VVA" data-callback="correctCaptcha"></div>
+                                </div>
+                                <div class="form-group mb-3">
+                                    <button type="submit" class="btn btn-primary btn-block text-uppercase mb-2 rounded-pill shadow-sm" style="color:#000000">Sign up</button>
+                                </div>
+
+                            </form>
+
+
+                        </div>
+                    </div>
+
+
+
+                </div><!-- End -->
+            </div>
+        </div><!-- End -->
+    </div>
+</div>
+</body>

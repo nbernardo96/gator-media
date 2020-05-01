@@ -1,35 +1,83 @@
-'use strict';
+var createError = require('http-errors');
+var express = require('express');
+var path = require('path');
+var cookieParser = require('cookie-parser');
+var logger = require('morgan');
 
-/**
- * Module dependencies.
- */
-var express     = require('express');
-var fs          = require('fs');
+//user authentication set up
+const passport = require('passport');
+const flash = require('express-flash');
+let methodoverride = require('method-override')
+const session = require('express-session');
+const initializePassport = require('./passport-config');
+initializePassport(passport,
+    email => user.find(user=>user.email === email),
+  id =>user.find(user => user.id === id)
+)
 
-/**
- * Main application entry file.
- * Please note that the order of loading is important.
- */
+//database sequelize
+const db = require('./config/database')
+db.authenticate()
+  .then(function(err) {
+    console.log('Connection has been established successfully.');
+  })
+  .catch(function (err) {
+    console.log('Unable to connect to the database:', err);
+  });
 
-// Load Configurations
-var config          = require('./config/config');
-var winston         = require('./config/winston');
+//Handler bars
 
-winston.info('Starting '+config.app.name+'...');
-winston.info('Config loaded: '+config.NODE_ENV);
-winston.debug('Accepted Config:',config);
 
-var db              = require('./config/sequelize');
-var passport        = require('./config/passport');
+
+
+var indexRouter = require('./routes/index');
+var usersRouter = require('./routes/users');
+var adminRouter = require('./routes/admin');
 
 var app = express();
 
-//Initialize Express
-require('./config/express')(app, passport);
+// view engine setup
+app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'ejs');
 
-//Start the app by listening on <port>
-app.listen(config.PORT);
-winston.info('Express app started on port ' + config.PORT);
+app.use(logger('dev'));
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
 
-//expose app
+//user authentication set up
+app.use(flash());
+app.use(methodoverride('_method'))
+app.use(session({
+  secret:"SECRET",
+  resave: false,
+  saveUninitialized: false
+}));
+app.use(passport.initialize());
+app.use(passport.session());
+//------------------------
+
+app.use(cookieParser());
+app.use(express.static(path.join(__dirname, 'public')));
+
+app.use('/', indexRouter);
+app.use('/users', usersRouter);
+app.use('/admin', adminRouter);
+
+
+// catch 404 and forward to error handler
+app.use(function(req, res, next) {
+  next(createError(404));
+});
+
+// error handler
+app.use(function(err, req, res, next) {
+  // set locals, only providing error in development
+  res.locals.message = err.message;
+  res.locals.error = req.app.get('env') === 'development' ? err : {};
+
+  // render the error page
+  res.status(err.status || 500);
+  res.render('error');
+});
+
 module.exports = app;

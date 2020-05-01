@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+</head>
+<body>
+<h1>Sell Page</h1>
+<% if (username != "") { %>
+    <p> Hi, <%= username %> </p>
+<% } %>
+    <br>
+    <form action="/media/post" method="POST">
+        <label >Media Name:</label><br>
+        <input type="text" name="media_name" placeholder="Enter title"><br>
+        <br>
+        <label >Description:</label><br>
+        <textarea type="text" name="description" placeholder="Description of your post"></textarea>
+        <br>
+        <select name='category' class="category-dropdwn">
+            <option class="category-dropdwn">All categories</option>
+            <% for(var i=0; i<categories.length; i++) {%>
+                <option><%= categories[i].categoryName %></option>
+            <% } %>
+        </select>
+        <br>
+        <h3 >Free for all? : </h3><br>
+        <input type="radio" id="free" name="isFree" value="True">
+        <label >Free</label><br>
+        <input type="radio" id="notFree" name="isFree" value="False">
+        <label >Not Free</label><br>
+        <br>
+        <a>upload</a>
+        <button type="submit" >Post</button>
+    </form>
+</body>
+</html>
