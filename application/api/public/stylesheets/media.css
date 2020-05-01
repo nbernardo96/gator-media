@@ -1,10 +1,14 @@
 h1 {
     text-align: center;
-    padding: 25px;
+    padding: 15px;
+    font-family: Roboto;
+    color: rgb(99, 97, 97)
 }
 
 p {
-    font-size: 22px;
+    font-size: 21px;
+    font-family: Roboto;
+    color: rgb(110, 110, 110);
     text-align: center;
 }
 
@@ -21,13 +25,40 @@ img {
     height: auto;
 }
 
+.gator-link {
+    font-size: 30px;
+    color: #333333;
+}
+
+.navbar-links {
+    position: relative;
+    margin-left: 1200px;
+}
+
+.about-btn {
+    margin-top: auto;
+    margin-bottom: auto;
+    font-size: 18px;
+    height: 40px;
+    padding-bottom: 42px;
+
+    border: 1px solid rgb(230, 229, 229);
+    border-radius: 7px;
+    background: rgb(138, 137, 137);
+}
+
+.logout-btn {
+    margin-top: 12px;
+    margin-left: 90px;
+}
+
 .contact-btn {
     display: block;
     margin-left: auto;
     margin-right: auto;
     border-radius: 15px;
 
-    width: 120px;
+    width: 115px;
     height: 35px;
 
     background: rgb(167, 238, 170);
