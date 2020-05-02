@@ -5,6 +5,10 @@
     <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'>
     <link rel='stylesheet' href='/stylesheets/media.css' />
     <link rel='stylesheet' href='/stylesheets/bootstrap-4.css' />
+
+        <link rel='stylesheet' href='/stylesheets/message.css' />
+
+
 </head>
 <body>
 
@@ -45,7 +49,6 @@
             <p>Description: This is a photo taken somewhere <br>
             category: <%= media.category %>
             </p>
-            <button class="contact-btn">Contact</button>
         </div>
         <div class="media-about">
             <h4>id: <%= media.id %></h4>
@@ -54,5 +57,60 @@
             <h4>url: <%= media.url %></h4>
         </div>
     </p>
+
+    <!-- Message popup-->
+
+
+
+        <p>
+          <button class="contact-btn button" data-modal="modalOne" style="background: rgb(167, 238, 170);">Contact Seller</button>
+        </p>
+        <div id="modalOne" class="modal">
+          <div class="modal-content">
+            <div class="contact-form">
+              <a class="close">&times;</a>
+              <form action="/">
+                <h1>Contact Seller</h1>
+                <div>
+                <h4>Product Information:
+                <h4>name: <%= media.mediaName %></h4>
+                 <h4>category: <%= media.category %></h4>
+                 </h4>
+                  <input class="fname" type="text" name="name" placeholder="Name">
+                  <input type="text" name="name" placeholder="Email">
+                </div>
+                <h4>Message:</h4>
+                <div>
+                  <textarea rows="4"></textarea>
+                </div>
+                <button type="submit" href="/">Submit</button>
+              </form>
+            </div>
+          </div>
+        </div>
+        </div>
+        <script>
+          var modalBtns = [...document.querySelectorAll(".button")];
+          modalBtns.forEach(function(btn){
+            btn.onclick = function() {
+              var modal = btn.getAttribute('data-modal');
+              document.getElementById(modal).style.display = "block";
+            }
+          });
+          var closeBtns = [...document.querySelectorAll(".close")];
+          closeBtns.forEach(function(btn){
+            btn.onclick = function() {
+              var modal = btn.closest('.modal');
+              modal.style.display = "none";
+            }
+          });
+          window.onclick = function(event) {
+            if (event.target.className === "modal") {
+              event.target.style.display = "none";
+            }
+          }
+        </script>
+
+
 </body>
 </html>
