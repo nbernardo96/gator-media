@@ -11,7 +11,7 @@ let methodoverride = require('method-override')
 const session = require('express-session');
 const initializePassport = require('./passport-config');
 initializePassport(passport,
-    email => user.find(user=>user.email === email),
+  email => user.find(user=>user.email === email),
   id =>user.find(user => user.id === id)
 )
 
@@ -81,3 +81,4 @@ app.use(function(err, req, res, next) {
 });
 
 module.exports = app;
+

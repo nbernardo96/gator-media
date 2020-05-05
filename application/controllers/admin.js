@@ -25,7 +25,7 @@ exports.getAdmin = (req, res, next) =>{
 	db.query('SELECT * FROM sys.media_table WHERE status = "pending";' , function (error, results, fields) {
 		items= results
 	});
-	res.render('admin', {
+	res.render('admindash', {
 		pendingItems: items
 	})
 }

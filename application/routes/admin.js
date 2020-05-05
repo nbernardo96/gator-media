@@ -6,7 +6,7 @@ const mysql = require('mysql')
 
 router.use(bodyParser.urlencoded({extended:true}));
 
-router.get('/admin', admin.getAdmin);
+router.get('/admindash', admin.getAdmin);
 router.post('/approve', admin.approvePost);
 router.post('/decline', admin.declinePost);
 

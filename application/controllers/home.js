@@ -99,16 +99,21 @@ exports.showDetail = (req, res, next)  => {
 exports.contactOwner = (req, res, next) =>{
 	db.query('SELECT MAX(message_id) as id FROM sys.messages_table', function (error, results, fields) {
 		increment = results[0].id+1;
+		console.log("send to owner")
+		console.log(increment)
+		console.log("content:" + req.body.sendContent)
+		console.log("recipent:" + req.body.buttonValue)
+		console.log("sender:" + req.user.id)
+		return messages.create({
+			message_id: increment,
+			message: req.body.sendContent,
+			recipient_id: req.body.buttonValue,
+			sender_id: req.user.id
+		}).then( _=>{
+			res.redirect("/")
+		})
 	});
-	console.log("send to owner")
-	return messages.create({
-		message_id: increment,
-		message: req.body.sendContent,
-		recipient_id: req.body.buttonValue,
-		sender_id: req.user.id
-	}).then( _=>{
-		res.redirect("/")
-	})
+
 }
 
 exports.postMedia = (req, res, next) =>{
