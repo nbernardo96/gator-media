@@ -57,22 +57,35 @@
     }
 }
 
-@media (max-width: 1379px) {
+@media (max-width: 1398px) {
     .navbar-nav > li > .form-inline > .form-control {
         width: 300px;
     }
 }
 
-@media (max-width: 1179px) {
+@media (max-width: 1199px) {
     .navbar-nav > li > .form-inline > .form-control {
         width: 115px;
     }
 }
 
-@media (max-width: 991px) {
+@media (max-width: 1015px) {
+    .navbar-link {
+        margin-left: 5px !important;
+    }
+}
+
+/* @media (max-width: 992px) {
+    .sell-btn {
+        margin-left: 40px !important;
+    }
+} */
+
+@media (max-width: 990px) {
 
     .navbar-nav > li > form > select {
         margin-top: -50px;
+        margin-left: 25px;
         border: none;
         background: none;
         color: darkgray;
@@ -88,7 +101,7 @@
         width: 400px;
         border-top-left-radius: 10px;
         border-bottom-left-radius: 10px;
-        margin-left: -117px;
+        margin-left: -127px;
         margin-top: 45px;
     }
 
@@ -102,10 +115,12 @@
 
     .navbar-nav > li > .form-inline {
         margin-top: 10px;
+        margin-left: -25px;
     }
 
-    .navbar-nav > li > .sell-btn {
+    .sell-btn {
         margin-top: 10px;
+        margin-left: 5px !important;
     }
 }
 
@@ -122,12 +137,12 @@
     
     .navbar-nav > li > .form-inline > .form-control {
         width: 200px;
-        margin-left: 0px;
+        margin-left: 20px;
         margin-top: 0px;
     }
 
     .navbar-nav > li > .form-inline > .btn {
         margin-top: 9px !important;
-        margin-left: 0px !important;
+        /* margin-left: 0px !important; */
     }
 }
