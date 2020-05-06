@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <link rel='stylesheet' href='/stylesheets/bootstrap-4.css' />
+    <link rel='stylesheet' href='/stylesheets/home-page.css' />
+
+  </head>
+  <body>
+
+    <nav class="navbar navbar-expand-lg navbar-dark gatormedia-nav">
+            <div>
+              <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+                <li class="navbar-brand">Gator Media</li>
+                <li class="nav-item active">
+                  <a class="nav-link home-btn" href="/">Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li><form action="/" method="post">
+                    <input type="search" class="search-container" name="term" ,placeholder="video name, audio name etc" />
+                    <select name='category' class="category-dropdwn">
+                        <option class="category-dropdwn">All categories</option>
+                    </select>
+                    <input type="submit" class="search-btn" value="Search" href="/search" />
+                </form></li>
+                <li><button class="sell-btn" onclick="window.location.href = '/users/sell'">Sell/Post</button></li>
+                <li class="about-btn"><a href='/users/about' class=" nav-link">About</a></li>
+                <li class="login-btn"><a href='/users/login' class=" nav-link">Login</a></li>
+                <li class="register-btn"><a href='/users/register' class="nav-link">Register</a></li>
+                <!-- <li><form action="/logout?_method=DELETE" method="POST">
+                    <button class="logout-btn" type="submit" onclick="logoutMessage()"> Logout </button>
+                </form></li> -->
+              </ul>
+              <script>
+                function logoutMessage() {
+                    alert("successful log out!");
+                }
+            </script>
+            </div>
+          </nav>
+
+        <div class="container px-5" style="margin-top:40px">
+            <h2 style="text-align:center">User Dashboard</h2>
+            <h2>--user : <%= user.email %></h2>
+            <p>This is your user dashboard. Here you can see everything you've posted, messages between you and other users, and posts that have been submitted, but have not been approved yet.</p>
+            <br>
+            <h4>Messages</h4>
+            <table class="table">
+                <thead>
+                  <tr>
+                    <th>Date</th>
+                    <th>Name</th>
+                    <th>Message</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <% for(var i=0; i<message.length; i++) {%>
+                      <tr>
+                          <td>null</td>
+                          <td>from user: <%= message[i].sender_id %></td>
+                          <td><%= message[i].message %> </td>
+                          <td><a href="#">Message preview</a></td>
+                      </tr>
+                  <% } %>
+                </tbody>
+              </table>
+            <br><br>
+            <h4>Active Posts</h4>
+            <p>Your approved and listed posts will appear here.</p>
+            <div class="row">
+                <% for(var i=0; i<item.length; i++) {%>
+                <% if(item[i].status == "approved") { %>
+                <div class="col">
+                    <div class="card" style="width:300px">
+                      <img class="card-img-top" src="blank.png" alt="image">
+                      <div class="card-body">
+                              <h4 class="card-title">name: <%= item[i].mediaName %></h4>
+                              <p class="card-text">description: <%= item[i].description %> </p>
+                              <p class="card-text">category: <%= item[i].category %></p>
+                              <p class="card-text">is it Free?: <%= item[i].isFree %></p>
+                              <p class="card-text">status: <%= item[i].status %></p>
+                        <h4 class="card-title">Post title</h4>
+                        <p class="card-text">Some example text. The description for the post will preview here.</p>
+                        <a href="#" class="btn btn-primary">View Post</a>
+                      </div>
+                    </div>
+                </div>
+                <% } %>
+                <% } %>
+            </div>
+            <br><br>
+            <h4>Pending Posts</h4>
+            <p>Your posts awaiting approval will appear here.</p>
+            <div class="row">
+                <% for(var i=0; i<item.length; i++) {%>
+                    <% if(item[i].status == "pending") { %>
+                        <div class="col">
+                            <div class="card" style="width:300px">
+                                <img class="card-img-top" src="blank.png" alt="image">
+                                <div class="card-body">
+                                    <h4 class="card-title">name: <%= item[i].mediaName %></h4>
+                                    <p class="card-text">description: <%= item[i].description %> </p>
+                                    <p class="card-text">category: <%= item[i].category %></p>
+                                    <p class="card-text">is it Free?: <%= item[i].isFree %></p>
+                                    <p class="card-text">status: <%= item[i].status %></p>
+                                    <h4 class="card-title">Post title</h4>
+                                    <p class="card-text">Some example text. The description for the post will preview here.</p>
+                                    <a href="#" class="btn btn-primary">View Post</a>
+                                </div>
+                            </div>
+                        </div>
+                    <% } %>
+                <% } %>
+            </div>
+        </div>
+    </body>
+  </html>
