@@ -47,8 +47,29 @@
           <img src="https://via.placeholder.com/400?text=Upload+a+photo" alt="Chania" class="mx-auto d-block">
           <button type="button" class="btn btn-light float-right">upload</button>
           <div class="form-group pt-5">
-              <label for="description">Description:</label>
-              <textarea class="form-control" rows="5" id="description" name="text" placeholder="Enter a description for your content..."></textarea>
+              <form action="/media/post" method="POST">
+                  <label >Media Name:</label><br>
+                  <input class="form-control" type="text" name="media_name" placeholder="Enter title"><br>
+                  <br>
+                  <label for="description">Description:</label><br>
+                  <textarea class="form-control" type="text" name="description" placeholder="Description of your post"></textarea>
+                  <br>
+                  <select class="form-control" name='category' class="category-dropdwn">
+                      <option class="category-dropdwn">All categories</option>
+                      <% for(var i=0; i<categories.length; i++) {%>
+                          <option><%= categories[i].categoryName %></option>
+                      <% } %>
+                  </select>
+                  <br>
+                  <h3 >Free for all? : </h3><br>
+                  <input type="radio" id="free" name="isFree" value="True">
+                  <label >Free</label><br>
+                  <input type="radio" id="notFree" name="isFree" value="False">
+                  <label >Not Free</label><br>
+                  <br>
+                  <a>upload</a>
+                  <button type="submit" >Post</button>
+              </form>
           </div>
 
           <button type="button" class="btn btn-success float-right">post</button>

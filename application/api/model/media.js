@@ -19,8 +19,24 @@ const media = db.define('media_table', {
 		allowNull: true,
 		type: Sequelize.DATE
 	},
+	description:{
+		allowNull: true,
+		type: Sequelize.STRING
+	},
+	isFree:{
+		allowNull: true,
+		type: Sequelize.STRING
+	},
+	user_id:{
+		allowNull: true,
+		type: Sequelize.INTEGER
+	},
+	status:{
+		allowNull: true,
+		type: Sequelize.STRING
+	}
 },{
 	tableName: 'media_table'
-})
+} )
 
 module.exports =  media;

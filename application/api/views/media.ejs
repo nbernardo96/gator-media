@@ -54,7 +54,6 @@
             <h4>id: <%= media.id %></h4>
             <h4>name: <%= media.mediaName %></h4>
             <h4>category: <%= media.category %></h4>
-            <h4>url: <%= media.url %></h4>
         </div>
     </p>
 
@@ -63,27 +62,31 @@
 
 
         <p>
-          <button class="contact-btn button" data-modal="modalOne" style="background: rgb(167, 238, 170);">Contact Seller</button>
+        <% if (media.isFree == "True") { %>
+            <button>Download </button>
+        <% } else if(media.isFree == "False"){ %>
+            <button class="contact-btn button" data-modal="modalOne" style="background: rgb(167, 238, 170);">Contact Seller</button>
+        <% } %>
         </p>
         <div id="modalOne" class="modal">
           <div class="modal-content">
             <div class="contact-form">
               <a class="close">&times;</a>
-              <form action="/">
+              <form action="/media/contact" method="POST">
                 <h1>Contact Seller</h1>
                 <div>
                 <h4>Product Information:
                 <h4>name: <%= media.mediaName %></h4>
-                 <h4>category: <%= media.category %></h4>
+                <h4>category: <%= media.category %></h4>
                  </h4>
                   <input class="fname" type="text" name="name" placeholder="Name">
                   <input type="text" name="name" placeholder="Email">
                 </div>
                 <h4>Message:</h4>
                 <div>
-                  <textarea rows="4"></textarea>
+                    <textarea type="text" name="sendContent" placeholder="message owner"></textarea>
                 </div>
-                <button type="submit" href="/">Submit</button>
+                <button type="submit" name="buttonValue" value="<%= media.user_id %>"> Send </button>
               </form>
             </div>
           </div>
@@ -110,7 +113,6 @@
             }
           }
         </script>
-
 
 </body>
 </html>
