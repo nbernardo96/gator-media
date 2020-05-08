@@ -40,7 +40,10 @@ router.get('/login', users.getLogin);
 router.post('/login', users.login);
 router.get('/register',checkNotAuthenticated, users.getRegister);
 router.post('/register',checkNotAuthenticated, users.register);
-
+router.get('/register',checkNotAuthenticated, users.getRegister);
+router.post('/register',checkNotAuthenticated, users.register);
+router.get('/sell', users.getSell);
+router.get('/dashboard', users.getDashboard);
 
 
 
