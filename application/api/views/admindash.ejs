@@ -45,36 +45,30 @@
             <h4>Pending Posts</h4>
             <p>Posts waiting for admin approval will appear here.</p>
             <div class="row">
+                <% for(var i=0; i<pendingItems.length; i++) {%>
                 <div class="col">
                     <div class="card" style="width:300px">
                       <img class="card-img-top" src="blank.png" alt="image">
-                      <div class="card-body">
-                        <h4 class="card-title">Post title</h4>
-                        <p class="card-text">Some example text. The description for the post will preview here.</p>
-                        <a href="#" class="btn btn-primary">View Post</a>
+                            <div class="card-body">
+                              <h4 class="card-title">name: <%= pendingItems[i].mediaName %></h4>
+                              <p class="card-text">description: <%= pendingItems[i].description %> </p>
+                              <p class="card-text">category: <%= pendingItems[i].category %></p>
+                              <p class="card-text">url: <%= pendingItems[i].url %></p>
+                              <p class="card-text">current status: <%= pendingItems[i].status %></p>
+                              <p class="card-text">is it Free?: <%= pendingItems[i].isFree %></p>
+                              </p>
+                              <form action="/admin/approve" method="POST">
+                                  <button type="submit" name="buttonValue" value= <%= pendingItems[i].id %> > Approved</button>
+                              </form>
+                              <form action="/admin/decline" method="POST">
+                                  <button type="submit" name="buttonValue" value= <%= pendingItems[i].id %> > Decline</button>
+                              </form>
+                              <br>
+                            </div>
                       </div>
                     </div>
                 </div>
-                <div class="col">
-                    <div class="card" style="width:300px">
-                      <img class="card-img-top" src="blank.png" alt="image">
-                      <div class="card-body">
-                        <h4 class="card-title">Post title</h4>
-                        <p class="card-text">Some example text. The description for the post will preview here.</p>
-                        <a href="#" class="btn btn-primary">View Post</a>
-                      </div>
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="card" style="width:300px">
-                      <img class="card-img-top" src="blank.png" alt="image">
-                      <div class="card-body">
-                        <h4 class="card-title">Post title</h4>
-                        <p class="card-text">Some example text. The description for the post will preview here.</p>
-                        <a href="#" class="btn btn-primary">View Post</a>
-                      </div>
-                    </div>
-                </div>
+                <% } %>
             </div>
             <br><br>
             <h4>Manage Users</h4>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+</head>
+<body>
+<a href='/'> back </a>
+    <h1>Admin</h1>
+    <% for(var i=0; i<pendingItems.length; i++) {%>
+        <h4>---media id: <%= pendingItems[i].id%>---</h4>
+        <p>
+        <h4>name: <%= pendingItems[i].mediaName %></h4>
+        <h4>description: <%= pendingItems[i].description %> </h4>
+        <h4>category: <%= pendingItems[i].category %></h4>
+        <h4>url: <%= pendingItems[i].url %></h4>
+        <h4>current status: <%= pendingItems[i].status %></h4>
+        <h4>is it Free?: <%= pendingItems[i].isFree %></h4>
+        </p>
+        <form action="/admin/approve" method="POST">
+            <button type="submit" name="buttonValue" value= <%= pendingItems[i].id %> > Approved</button>
+        </form>
+        <form action="/admin/decline" method="POST">
+            <button type="submit" name="buttonValue" value= <%= pendingItems[i].id %> > Decline</button>
+        </form>
+        <br>
+
+    <% } %>
+</body>
+</html>
