@@ -1,3 +1,5 @@
+// functionality of the general home page
+
 const index = require('../model/index');
 const mysql = require('mysql');
 const media = require('../model/media');
@@ -35,48 +37,9 @@ exports.submitIndex = (req, res, next) =>{
 	});
 }
 
-exports.showUsers = (req, res, next) =>{
-	return index.findAll().then(users => {
-		res.render('index', {title: 'Hi', users: users})
-	}).catch(e => {
-		console.log(e);
-	});
-}
 
-exports.showUser = (req, res, next) =>{
-	return index.findOne({
-		where: {id: req.params.user_id}
-	}).then(user => {
-		res.render('user', {user: user})
-	}).catch(e => {
-		console.log(e);
-	});
-}
 
-exports.showEdit = (req, res, next)  => {
-	return index.findOne({
-		where: {id: req.params.user_id}
-	}).then(user => {
-		res.render('edit', {user: user})
-	}).catch(e => {
-		console.log(e);
-	});
-}
-
-exports.edit = (req, res, next)  => {
-	return index.update({
-		email: req.body.user_email
-	}, {
-		where: {
-			id: req.params.user_id
-		}
-	}).then(result => {
-		res.redirect('/user/' + req.params.user_id)
-	}).catch(e => {
-		console.log(e);
-	});
-}
-
+//show the detail in each post
 exports.showDetail = (req, res, next)  => {
 	return media.findOne({
 		where: {id: req.params.media_id}
@@ -96,6 +59,8 @@ exports.showDetail = (req, res, next)  => {
 	})
 }
 
+
+//send message to the post owner from the "buyer"
 exports.contactOwner = (req, res, next) =>{
 	db.query('SELECT MAX(message_id) as id FROM sys.messages_table', function (error, results, fields) {
 		increment = results[0].id+1;
@@ -116,6 +81,8 @@ exports.contactOwner = (req, res, next) =>{
 
 }
 
+
+//post new post which will automatically show in admin page
 exports.postMedia = (req, res, next) =>{
 	db.query('SELECT MAX(id) as id FROM sys.media_table', function (error, results, fields) {
 		increment = results[0].id+1;
@@ -134,37 +101,16 @@ exports.postMedia = (req, res, next) =>{
 }
 
 
-exports.deleteUser = (req, res, next)  => {
-	return index.destroy({
-		where: {
-			id: req.params.user_id
-		}
-	}).then(result => {
-		res.redirect('/users')
-	}).catch(e => {
-		console.log(e);
-	});
-}
 
-exports.deleteUserJson = (req, res, next)  => {
-	return index.destroy({
-		where: {
-			id: req.params.user_id
-		}
-	}).then(result => {
-		res.send({mes:"Success"});
-	}).catch(e => {
-		console.log(e);
-	});
-}
 
+//for user to logout
 exports.logout = (req, res, next) =>{
 	req.logOut()
 	res.redirect('/users/login')
 }
 
 
-
+//get the home page
 exports.getIndex = (req, res, next)  => {
 	db.query('SELECT * FROM sys.media_table', function (error, results, fields) {
 		items= results
