@@ -1,4 +1,4 @@
-// functionality of the admin page
+// functionality of the admin page (approve/decline)
 
 var express = require('express');
 var router = express.Router();
