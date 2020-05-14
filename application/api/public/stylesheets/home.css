@@ -51,7 +51,7 @@
     color: rgb(77, 77, 77);
 }
 
-@media (max-width: 1579px) {
+@media (max-width: 1599px) {
     .navbar-nav > li > form {
         margin-left: 0px;
     }
