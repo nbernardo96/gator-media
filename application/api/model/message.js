@@ -1,3 +1,5 @@
+//handle the messages_tables in mySQL
+
 const Sequelize = require('sequelize');
 const db = require('../config/database');
 

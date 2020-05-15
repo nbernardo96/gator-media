@@ -1,3 +1,5 @@
+//interface of the users.js from controller folder
+
 var express = require('express');
 var router = express.Router();
 var users = require('../controllers/users')

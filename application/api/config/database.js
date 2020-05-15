@@ -1,3 +1,5 @@
+//config of the basic datebase setup
+
 const Sequelize = require('sequelize');
 
 module.exports = new Sequelize('sys', 'admin', '123123123', {
