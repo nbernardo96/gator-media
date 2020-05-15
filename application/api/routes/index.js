@@ -1,3 +1,5 @@
+//interface of the home.js from controllers
+
 var express = require('express');
 var router = express.Router();
 var bodyParser = require('body-parser')
@@ -22,17 +24,11 @@ checkNotAuthenticated = (req, res, next) => {
 
 // interface of all function
 // function implemented in controllers
-router.get('/', home.getIndex);
-router.get('/users', home.showUsers);
-router.get('/user/:user_id', home.showUser);
-router.get('/user/:user_id/edit', home.showEdit);
-router.post('/user/:user_id/edit', home.edit);
-router.get('/media/:media_id', home.showDetail);
-router.post('/media/contact',checkAuthenticated, home.contactOwner)
-router.post('/media/post', checkAuthenticated, home.postMedia);
-router.post('/user/:user_id/delete', home.deleteUser);
-router.post('/user/:user_id/delete-json', home.deleteUserJson);
-router.delete('/logout', home.logout);
+router.get('/', home.getIndex); //get the home page
+router.get('/media/:media_id', home.showDetail); //get the media detail
+router.post('/media/contact',checkAuthenticated, home.contactOwner) //perform the action of sending message to the owner
+router.post('/media/post', checkAuthenticated, home.postMedia); //perform the action of posting new media post
+router.delete('/logout', home.logout); // logout function
 
 
 //search feature, just ignore this part

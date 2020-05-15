@@ -1,3 +1,5 @@
+// functionality of the admin page (approve/decline)
+
 var express = require('express');
 var router = express.Router();
 var bodyParser = require('body-parser')
@@ -21,6 +23,8 @@ db.query('SELECT * FROM sys.media_table WHERE status = "pending";' , function (e
 	items= results
 });
 
+
+//get all the pending post from the database
 exports.getAdmin = (req, res, next) =>{
 	db.query('SELECT * FROM sys.media_table WHERE status = "pending";' , function (error, results, fields) {
 		items= results
@@ -30,6 +34,8 @@ exports.getAdmin = (req, res, next) =>{
 	})
 }
 
+
+// action of approving the pending posts from the admin dashboard
 exports.approvePost = (req, res, next) =>{
 	console.log("approved")
 	console.log(req.body.buttonValue)
@@ -47,6 +53,7 @@ exports.approvePost = (req, res, next) =>{
 	});
 }
 
+//action of declining the pending post from the admin dashboard
 exports.declinePost = (req, res, next) =>{
 	console.log("decline")
 	console.log(req.body.buttonValue)

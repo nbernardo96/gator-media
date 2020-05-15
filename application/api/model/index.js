@@ -1,3 +1,5 @@
+//handle the users_table from mySQL
+
 const Sequelize = require('sequelize');
 const db = require('../config/database');
 

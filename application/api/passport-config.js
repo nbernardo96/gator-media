@@ -1,3 +1,5 @@
+//config file for passport to handle the login logout function
+
 const LocalStrategy = require('passport-local').Strategy
 const bcrypt = require('bcrypt');
 const mysql = require('mysql');
