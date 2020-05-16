@@ -2,147 +2,38 @@
     text-align: center;
 }
 
-/* nav-bar styling */
+/* content/cards styling */
 
-.home-btn {
-    font-size: 25px;
+.container-home {
+    margin-top: 40px;
+    display: grid;
+    grid-gap: 1rem;
 }
 
-.navbar-nav > li > form {
-    margin-left: 200px;
+.card-posts {
+    align-items: center;
+    margin: 0 auto;
 }
 
-.navbar-nav > li > form > select {
-    height: 40px;
-    color: black;
-    background: rgb(253, 252, 178);
-    border-radius: 10px 0px 0px 10px;
-    cursor: pointer;
-}
+/* responsiveness for cards */
 
-.navbar-nav > li > form > select:hover {
-    background: rgba(253, 252, 178, 0.932);
-}
-
-.navbar-nav > li > .form-inline > .form-control {
-    height: 40px;
-    width: 500px;
-
-    border-radius: 0px;
-    border: darkgray;
-}
-
-.navbar-nav > li > .form-inline > .btn {
-    margin-left: -9px;
-
-    height: 40px;
-    background: rgb(236, 236, 236);
-    color: rgb(53, 53, 53);
-    border-color: darkgray;
-    border-radius: 0px 10px 10px 0px;
-    border: none;
-    
-}
-
-.navbar-nav > li > .form-inline > .btn:hover {
-    background: rgba(236, 236, 236, 0.863);
-}
-
-.navbar-nav > li > .btn {
-    border-radius: 10px;
-    color: white;
-}
-
-.navbar-nav > li > .navbar-link:hover {
-    color: rgb(77, 77, 77);
-}
-
-@media (max-width: 1599px) {
-    .navbar-nav > li > form {
-        margin-left: 0px;
+@media (min-width: 680px) {
+    .container-home { 
+        grid-template-columns: repeat(2, 1fr); 
+        grid-gap: 2rem;
     }
 }
 
-@media (max-width: 1398px) {
-    .navbar-nav > li > .form-inline > .form-control {
-        width: 300px;
+@media (min-width: 980px) {
+    .container-home { 
+        grid-template-columns: repeat(3, 1fr); 
+        grid-gap: 3rem;
     }
 }
 
-@media (max-width: 1199px) {
-    .navbar-nav > li > .form-inline > .form-control {
-        width: 115px;
-    }
-}
-
-@media (max-width: 1015px) {
-    .navbar-link {
-        margin-left: 5px !important;
-    }
-}
-
-@media (max-width: 990px) {
-
-    .navbar-nav > li > form > select {
-        margin-top: -50px;
-        margin-left: 25px;
-        border: none;
-        background: none;
-        color: darkgray;
-    }
-
-    .navbar-nav > li > form > select:hover {
-        color: rgb(214, 214, 214);
-        background: none;
-    }
-    
-    
-    .navbar-nav > li > .form-inline > .form-control {
-        width: 400px;
-        border-top-left-radius: 10px;
-        border-bottom-left-radius: 10px;
-        margin-left: -127px;
-        margin-top: 45px;
-    }
-
-    .navbar-nav > li > .form-inline > .btn {
-        margin-top: 45px !important;
-    }
-
-    .navbar-nav > li > .btn {
-        border: none;
-    }
-
-    .navbar-nav > li > .form-inline {
-        margin-top: 10px;
-        margin-left: -25px;
-    }
-
-    .sell-btn {
-        margin-top: 10px;
-        margin-left: 5px !important;
-    }
-}
-
-@media (max-width: 575px) {
-    .navbar-nav > li > form > select {
-        margin-top: 0px;
-    }
-
-    .navbar-nav > li > form > select:hover {
-        color: rgb(214, 214, 214);
-        background: none;
-    }
-    
-    
-    .navbar-nav > li > .form-inline > .form-control {
-        width: 250px;
-        margin-left: 20px;
-        margin-top: 0px;
-    }
-
-    .navbar-nav > li > .form-inline > .btn {
-        margin-top: 9px !important;
-        margin-left: 0px;
+@media (min-width: 1300px) {
+    .container-home { 
+        grid-template-columns: repeat(4, 1fr);
+        grid-gap: 4rem; 
     }
 }
