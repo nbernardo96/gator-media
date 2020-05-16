@@ -1,3 +1,9 @@
+.site-header {
+    text-align: center;
+}
+
+/* nav-bar styling */
+
 .home-btn {
     font-size: 25px;
 }
@@ -75,12 +81,6 @@
     }
 }
 
-/* @media (max-width: 992px) {
-    .sell-btn {
-        margin-left: 40px !important;
-    }
-} */
-
 @media (max-width: 990px) {
 
     .navbar-nav > li > form > select {
@@ -136,13 +136,13 @@
     
     
     .navbar-nav > li > .form-inline > .form-control {
-        width: 200px;
+        width: 250px;
         margin-left: 20px;
         margin-top: 0px;
     }
 
     .navbar-nav > li > .form-inline > .btn {
         margin-top: 9px !important;
-        /* margin-left: 0px !important; */
+        margin-left: 0px;
     }
 }
