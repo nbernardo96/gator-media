@@ -40,67 +40,30 @@ var db  = mysql.createConnection({
 });
 db.connect(function(err) {
 	if (err) throw err;
-	console.log("Connected!");
 });
-
-
+var items
+var categories
+//db.query('SELECT * FROM sys.media_table', function (error, results, fields) {
+// 		items= results;
+//}
+//db.query('SELECT DISTINCT categoryName FROM sys.categories_table', function (error, results, fields) {
+// 			categories= results;
+//}
 
 router.use(bodyParser.urlencoded({extended:true}));
 router.post('/', function(req, res, next){
 	db.query('SELECT * FROM sys.media_table', function (error, results, fields) {
-		items= results
-	});
-	db.query('SELECT DISTINCT categoryName FROM sys.categories_table', function (error, results, fields) {
-		categories= results
-	});
-	var searchText = req.body.term;
-	var searchCate = req.body.category;
-	console.log(searchText, searchCate)
-	if(req.body.term == null ||  req.body.term==""){
-		if (req.isAuthenticated()) {
-			res.render('index', {
-				user: req.user,
-				item: items,
-				category: categories,
-				searchCate: searchCate,
-				title: ""
-			})
-		} else {
-			res.render('index', {
-				user: "",
-				item: items,
-				category: categories,
-				searchCate: searchCate,
-				title: ""
-			})
-		}
-	} else {
-		db.query(`SELECT * FROM sys.media_table WHERE mediaName Like '%` + searchText + `%'`, function (error, results, fields) {
-			console.log(results.length) //debug statement
-			if (results.length == 0) {
+		items= results;
+		db.query('SELECT DISTINCT categoryName FROM sys.categories_table', function (error, results, fields) {
+			categories= results;
+			var searchText = req.body.term;
+			var searchCate = req.body.category;
+			console.log(searchText, searchCate)
+			if(req.body.term == null ||  req.body.term==""){
 				if (req.isAuthenticated()) {
 					res.render('index', {
 						user: req.user,
 						item: items,
-						category: categories,
-						searchCate: "All categories",
-						title: ""
-					})
-				} else {
-					res.render('index', {
-						username: "",
-						item: items,
-						category: categories,
-						searchCate: "All categories",
-						title: ""
-					})
-				}
-			} else {
-				searchText = results[0].mediaName
-				if (req.isAuthenticated()) {
-					res.render('index', {
-						user: req.user,
-						item: results,
 						category: categories,
 						searchCate: searchCate,
 						title: ""
@@ -108,15 +71,56 @@ router.post('/', function(req, res, next){
 				} else {
 					res.render('index', {
 						user: "",
-						item: results,
+						item: items,
 						category: categories,
 						searchCate: searchCate,
 						title: ""
 					})
 				}
+			} else {
+				db.query(`SELECT * FROM sys.media_table WHERE mediaName Like '%` + searchText + `%'`, function (error, results, fields) {
+					console.log(results.length) //debug statement
+					if (results.length == 0) {
+						if (req.isAuthenticated()) {
+							res.render('index', {
+								user: req.user,
+								item: items,
+								category: categories,
+								searchCate: "All categories",
+								title: ""
+							})
+						} else {
+							res.render('index', {
+								username: "",
+								item: items,
+								category: categories,
+								searchCate: "All categories",
+								title: ""
+							})
+						}
+					} else {
+						searchText = results[0].mediaName
+						if (req.isAuthenticated()) {
+							res.render('index', {
+								user: req.user,
+								item: results,
+								category: categories,
+								searchCate: searchCate,
+								title: ""
+							})
+						} else {
+							res.render('index', {
+								user: "",
+								item: results,
+								category: categories,
+								searchCate: searchCate,
+								title: ""
+							})
+						}
+					}
+				});
 			}
 		});
-	}
-});
-
+	});
+})
 module.exports = router;
