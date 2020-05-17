@@ -4,7 +4,8 @@ const index = require('../model/index');
 const mysql = require('mysql');
 const bcrypt = require('bcrypt');
 const passport = require('passport');
-const media = require('../model/media');
+const media = require("../model/database");
+const Image = media.images;
 const messages = require('../model/message');
 
 //getting data from database
@@ -80,13 +81,20 @@ exports.getDashboard = (req, res, next)=>{
 		}
 	}).then(result=>{
 			message = result;
-			media.findAll({
+			Image.findAll({
 				where:{
 					user_id: req.user.id
 				}
-			}).then( result =>{
+			}).then( results =>{
+				let items = results
+				for (let i = 0; i < items.length; i++){
+					let currentItem = new Buffer(results[i].data).toString('base64');
+					items[i].data = currentItem
+					console.log(items[i].name)
+				}
+
 				res.render('dashboard', {
-					item: result,
+					item: items,
 					user:req.user,
 					message: message
 				})

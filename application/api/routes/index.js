@@ -1,11 +1,12 @@
 //interface of the home.js from controllers
-
+const uploadController = require("../controllers/upload");
+const upload = require("../middleware/upload");
 var express = require('express');
 var router = express.Router();
 var bodyParser = require('body-parser')
 const home = require('../controllers/home')
 const mysql = require('mysql')
-
+const Buffer = require('Buffer')
 //check if the user logged in base on the cookie
 checkAuthenticated = (req, res, next) => {
 	if(req.isAuthenticated()){
@@ -29,6 +30,19 @@ router.get('/media/:media_id', home.showDetail); //get the media detail
 router.post('/media/contact',checkAuthenticated, home.contactOwner) //perform the action of sending message to the owner
 router.post('/media/post', checkAuthenticated, home.postMedia); //perform the action of posting new media post
 router.delete('/logout', home.logout); // logout function
+
+//upload
+router.post("/upload", upload.single("file"), uploadController.uploadFiles);
+//testing
+router.get('/showImages', function(req, res, next){
+	db.query('SELECT * FROM sys.images', function (error, results, fields) {
+		items = results;
+		let currentItem = new Buffer(results[2].data).toString('base64');
+		const image = currentItem
+		res.render('showImages', {result: image})
+	})
+});
+
 
 
 //search feature, just ignore this part
@@ -58,7 +72,7 @@ router.post('/', function(req, res, next){
 			categories= results;
 			var searchText = req.body.term;
 			var searchCate = req.body.category;
-			console.log(searchText, searchCate)
+			console.log(items, searchText, searchCate)
 			if(req.body.term == null ||  req.body.term==""){
 				if (req.isAuthenticated()) {
 					res.render('index', {

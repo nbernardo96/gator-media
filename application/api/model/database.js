@@ -22,4 +22,4 @@ db.sequelize = sequelize;
 db.images = require("../model/image.model")(sequelize, Sequelize);
 
 module.exports = db;
-module.exports = sequelize;
+
