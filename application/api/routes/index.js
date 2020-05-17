@@ -31,7 +31,7 @@ router.post('/media/post', checkAuthenticated, home.postMedia); //perform the ac
 router.delete('/logout', home.logout); // logout function
 
 //upload
-router.post("/upload", upload.single("file"), uploadController.uploadFiles);
+router.post("/upload", checkAuthenticated, upload.single("file"), uploadController.uploadFiles);
 //testing
 router.get('/showImages', function(req, res, next){
 	db.query('SELECT * FROM sys.images', function (error, results, fields) {
