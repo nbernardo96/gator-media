@@ -1,4 +1,4 @@
-//interface of the home.js from controllers
+
 const uploadController = require("../controllers/upload");
 const upload = require("../middleware/upload");
 var express = require('express');
@@ -7,7 +7,6 @@ var bodyParser = require('body-parser')
 const home = require('../controllers/home')
 const mysql = require('mysql')
 const Buffer = require('Buffer')
-//check if the user logged in base on the cookie
 checkAuthenticated = (req, res, next) => {
 	if(req.isAuthenticated()){
 		return next()
@@ -72,7 +71,6 @@ router.post('/', function(req, res, next){
 			categories= results;
 			var searchText = req.body.term;
 			var searchCate = req.body.category;
-			console.log(items, searchText, searchCate)
 			if(req.body.term == null ||  req.body.term==""){
 				if (req.isAuthenticated()) {
 					res.render('index', {
