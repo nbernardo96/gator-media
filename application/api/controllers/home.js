@@ -125,7 +125,6 @@ exports.getIndex = (req, res, next)  => {
 		console.log(items.name)
 		db.query('SELECT categoryName FROM sys.categories_table', function (error, results, fields) {
 			categories= results
-			console.log(categories)
 			if (req.isAuthenticated()) {
 				res.render('index', {
 					user: req.user,

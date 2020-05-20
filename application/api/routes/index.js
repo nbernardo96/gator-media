@@ -65,8 +65,12 @@ var categories
 
 router.use(bodyParser.urlencoded({extended:true}));
 router.post('/', function(req, res, next){
-	db.query('SELECT * FROM sys.media_table', function (error, results, fields) {
+	db.query('SELECT * FROM sys.images', function (error, results, fields) {
 		items= results;
+		for (let i = 0; i < items.length; i++){
+			let currentItem = new Buffer(results[i].data).toString('base64');
+			items[i].data = currentItem
+		}
 		db.query('SELECT DISTINCT categoryName FROM sys.categories_table', function (error, results, fields) {
 			categories= results;
 			var searchText = req.body.term;
@@ -90,7 +94,12 @@ router.post('/', function(req, res, next){
 					})
 				}
 			} else {
-				db.query(`SELECT * FROM sys.media_table WHERE mediaName Like '%` + searchText + `%'`, function (error, results, fields) {
+				db.query(`SELECT * FROM sys.images WHERE title Like '%` + searchText + `%'`, function (error, results, fields) {
+					items= results;
+					for (let i = 0; i < items.length; i++){
+						let currentItem = new Buffer(results[i].data).toString('base64');
+						items[i].data = currentItem
+					}
 					console.log(results.length) //debug statement
 					if (results.length == 0) {
 						if (req.isAuthenticated()) {

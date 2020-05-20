@@ -18,6 +18,7 @@ const uploadFiles = async (req, res) => {
 
       Image.create({
         type: req.file.mimetype,
+        title: req.body.titleName,
         name: req.file.originalname,
         description: req.body.description,
         isFree : req.body.isFree,
