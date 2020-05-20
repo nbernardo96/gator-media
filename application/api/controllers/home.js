@@ -2,8 +2,10 @@
 
 const index = require('../model/index');
 const mysql = require('mysql');
-const media = require('../model/media');
 const messages = require('../model/message');
+const media = require("../model/database");
+const Image = media.images;
+
 
 var db  = mysql.createConnection({
 	host: "database-2.cmsixqgn7o2m.us-east-2.rds.amazonaws.com",
@@ -41,15 +43,17 @@ exports.submitIndex = (req, res, next) =>{
 
 //show the detail in each post
 exports.showDetail = (req, res, next)  => {
-	return media.findOne({
+	return Image.findOne({
 		where: {id: req.params.media_id}
 	}).then(media => {
+		let currentItem = new Buffer(media.data).toString('base64');
+		media.data = currentItem
 		if (req.isAuthenticated()) {
-		res.render('media', {
-			media: media,
-			userID: req.user.name
-		})
-	} else {
+			res.render('media', {
+				media: media,
+				userID: req.user.name
+			})
+		} else {
 			res.render('media', {
 				media: media,
 				userID: ""
@@ -87,7 +91,7 @@ exports.postMedia = (req, res, next) =>{
 	db.query('SELECT MAX(id) as id FROM sys.media_table', function (error, results, fields) {
 		increment = results[0].id+1;
 	});
-	return media.create({
+	return Image.create({
 		id: increment,
 		mediaName: req.body.media_name,
 		description: req.body.description,
@@ -112,27 +116,35 @@ exports.logout = (req, res, next) =>{
 
 //get the home page
 exports.getIndex = (req, res, next)  => {
-	db.query('SELECT * FROM sys.media_table', function (error, results, fields) {
+	db.query('SELECT * FROM sys.images', function (error, results, fields) {
 		items= results
+		for (let i = 0; i < items.length; i++){
+			let currentItem = new Buffer(results[i].data).toString('base64');
+			items[i].data = currentItem
+		}
+		console.log(items.name)
+		db.query('SELECT categoryName FROM sys.categories_table', function (error, results, fields) {
+			categories= results
+			console.log(categories)
+			if (req.isAuthenticated()) {
+				res.render('index', {
+					user: req.user,
+					item: items,
+					category: categories,
+					searchCate: "All categories",
+					title: ""
+				})
+			} else {
+				res.render('index', {
+					user: "",
+					item: items,
+					category: categories,
+					searchCate: "All categories",
+					title: ""
+				})
+			}
+		});
 	});
-	db.query('SELECT DISTINCT category FROM sys.media_table', function (error, results, fields) {
-		categories= results
-	});
-	if (req.isAuthenticated()) {
-		res.render('index', {
-			user: req.user,
-			item: items,
-			category: categories,
-			searchCate: "All categories",
-			title: ""
-		})
-	} else {
-		res.render('index', {
-			user: "",
-			item: items,
-			category: categories,
-			searchCate: "All categories",
-			title: ""
-		})
-	}
+
+
 }

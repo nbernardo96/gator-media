@@ -3,13 +3,15 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
-
 //user authentication set up
 const passport = require('passport');
 const flash = require('express-flash');
 let methodoverride = require('method-override')
 const session = require('express-session');
 const initializePassport = require('./passport-config');
+
+global.__basedir = __dirname;
+
 initializePassport(passport,
   email => user.find(user=>user.email === email),
   id =>user.find(user => user.id === id)
@@ -26,7 +28,6 @@ db.authenticate()
   });
 
 //Handler bars
-
 
 
 

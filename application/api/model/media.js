@@ -36,7 +36,10 @@ const media = db.define('media_table', {
 	status:{
 		allowNull: true,
 		type: Sequelize.STRING
-	}
+	},
+	data: {
+		type: Sequelize.BLOB("long"),
+	},
 },{
 	tableName: 'media_table'
 } )

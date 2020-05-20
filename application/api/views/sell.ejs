@@ -44,10 +44,18 @@
           <div class="col-sm-8"></div>
           <h2 style="text-align:center">Sell/Post</h2>
 
-          <img src="https://via.placeholder.com/400?text=Upload+a+photo" alt="Chania" class="mx-auto d-block">
-          <button type="button" class="btn btn-light float-right">upload</button>
+
           <div class="form-group pt-5">
-              <form action="/media/post" method="POST">
+
+              <form action="/upload" method="POST" enctype="multipart/form-data">
+                  <div class="row">
+                      <div class="col-sm-12">
+                          <div class="preview-images" ></div>
+                      </div>
+                  </div>
+                  <div class="form-group">
+                      <input type="file" name="file" id="input-files" class="btn btn-light float-right">
+                  </div>
                   <label >Media Name:</label><br>
                   <input class="form-control" type="text" name="media_name" placeholder="Enter title"><br>
                   <br>
@@ -66,15 +74,35 @@
                   <label >Free</label><br>
                   <input type="radio" id="notFree" name="isFree" value="False">
                   <label >Not Free</label><br>
-                  <br>
-                  <a>upload</a>
                   <button type="submit" >Post</button>
               </form>
           </div>
-
-          <button type="button" class="btn btn-success float-right">post</button>
     </div>
-
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script>
+	    $(document).ready(function() {
+		    let imagesPreview = function(input, placeToInsertImagePreview) {
+			    if (input.files) {
+				    let filesAmount = input.files.length;
+				    for (let i = 0; i < 1; i++) {
+					    let reader = new FileReader();
+					    reader.onload = function(event) {
+						    $($.parseHTML("<img>"))
+							    .attr("src", event.target.result)
+                                .attr("width", 400)
+                                .attr("height", 400)
+							    .appendTo(placeToInsertImagePreview);
+					    };
+					    reader.readAsDataURL(input.files[0]);
+				    }
+			    }
+		    };
+		    $("#input-files").on("change", function() {
+			    imagesPreview(this, "div.preview-images");
+		    });
+	    });
+    </script>
 
     </body>
   </html>

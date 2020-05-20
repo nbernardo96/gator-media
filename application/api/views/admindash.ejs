@@ -48,12 +48,11 @@
                 <% for(var i=0; i<pendingItems.length; i++) {%>
                 <div class="col">
                     <div class="card" style="width:300px">
-                      <img class="card-img-top" src="blank.png" alt="image">
+                        <img src="data:image/jpg;base64, <%- pendingItems[i].data %>"  width="100" height="100">
                             <div class="card-body">
-                              <h4 class="card-title">name: <%= pendingItems[i].mediaName %></h4>
+                              <h4 class="card-title">name: <%= pendingItems[i].name %></h4>
                               <p class="card-text">description: <%= pendingItems[i].description %> </p>
                               <p class="card-text">category: <%= pendingItems[i].category %></p>
-                              <p class="card-text">url: <%= pendingItems[i].url %></p>
                               <p class="card-text">current status: <%= pendingItems[i].status %></p>
                               <p class="card-text">is it Free?: <%= pendingItems[i].isFree %></p>
                               </p>
