@@ -19,8 +19,9 @@ const index = db.define('users_table', {
 		type: Sequelize.DATE
 	},
 	isAdmin:{
-		allowNull: false,
-		type: Sequelize.STRING
+		allowNull: true,
+		type: Sequelize.STRING,
+		defaultValue: "False"
 	}
 },{
 	tableName: 'users_table'

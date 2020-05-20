@@ -4,7 +4,8 @@ var express = require('express');
 var router = express.Router();
 var bodyParser = require('body-parser')
 const mysql = require('mysql')
-const media = require('../model/media')
+const media = require("../model/database");
+const Image = media.images;
 
 router.use(bodyParser.urlencoded({extended:true}));
 
@@ -19,19 +20,24 @@ db.connect(function(err) {
 	console.log("Connected!");
 });
 let items;
-db.query('SELECT * FROM sys.media_table WHERE status = "pending";' , function (error, results, fields) {
+db.query('SELECT * FROM sys.images WHERE status = "pending";' , function (error, results, fields) {
 	items= results
 });
 
 
 //get all the pending post from the database
 exports.getAdmin = (req, res, next) =>{
-	db.query('SELECT * FROM sys.media_table WHERE status = "pending";' , function (error, results, fields) {
+	db.query('SELECT * FROM sys.images WHERE status = "pending";' , function (error, results, fields) {
 		items= results
+		for (let i = 0; i < items.length; i++){
+			let currentItem = new Buffer(results[i].data).toString('base64');
+			items[i].data = currentItem
+		}
+		res.render('admindash', {
+			pendingItems: items
+		})
 	});
-	res.render('admindash', {
-		pendingItems: items
-	})
+
 }
 
 
@@ -39,13 +45,13 @@ exports.getAdmin = (req, res, next) =>{
 exports.approvePost = (req, res, next) =>{
 	console.log("approved")
 	console.log(req.body.buttonValue)
-	return media.findOne({
+	return Image.findOne({
 		where:{
 			id: req.body.buttonValue
 		}
 	}).then( media => {
 		media.update({
-			status: "approved"
+			status: "Approved"
 		})
 		res.redirect("/")
 	}).catch(e => {
@@ -57,7 +63,7 @@ exports.approvePost = (req, res, next) =>{
 exports.declinePost = (req, res, next) =>{
 	console.log("decline")
 	console.log(req.body.buttonValue)
-	return media.destroy({
+	return Image.destroy({
 		where:{
 			id: req.body.buttonValue
 		}
