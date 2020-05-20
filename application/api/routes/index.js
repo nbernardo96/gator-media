@@ -101,8 +101,11 @@ router.post('/', function(req, res, next){
 						items[i].data = currentItem
 					}
 					console.log(results.length) //debug statement
+					if(!req.user) {
+						console.log("user:", req.user)
+					}
 					if (results.length == 0) {
-						if (req.isAuthenticated()) {
+						if (req.user) {
 							res.render('index', {
 								user: req.user,
 								item: items,
@@ -112,6 +115,7 @@ router.post('/', function(req, res, next){
 							})
 						} else {
 							res.render('index', {
+								user: "",
 								username: "",
 								item: items,
 								category: categories,

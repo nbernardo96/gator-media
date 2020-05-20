@@ -36,8 +36,7 @@
                 <% if (user == "") { %>
                     <li class="login-btn"><a href='/users/login' class=" nav-link">Login</a></li>
                     <li class="register-btn"><a href='/users/register' class="nav-link">Register</a></li>
-                <% } %>
-                <% if (user != "") { %>
+                <% } else if (user != "") { %>
                     <li class="nav-item active">
                         <% if (user.isAdmin == "True") { %>
                             <a class="nav-link home-btn" href="/admin/admindash">Admin </a>
