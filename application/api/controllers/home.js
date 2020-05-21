@@ -66,7 +66,7 @@ exports.showDetail = (req, res, next)  => {
      })}).catch(e => {
      console.log(e);
     })
-}
+   }
 
 
 //send message to the post owner from the "buyer"
