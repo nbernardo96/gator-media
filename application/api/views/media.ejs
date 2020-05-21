@@ -36,7 +36,9 @@
                 <form action="/" method="post" class="form-inline">
                     <select name='category' class="browser-default custom-select">
                         <option>All categories</option>
-
+                    <% for(var i=0; i<category.length; i++) {%>
+                        <option><%= category[i].categoryName %></option>
+                    <% } %>
                     </select>
                     <input type="search" class="form-control mr-sm-2" name="term" placeholder="Search" aria-label="Search"/>
                     <input type="submit" class="btn btn-outline-success my-2 my-sm-0 search-btn" value="Search" href="/search"/>

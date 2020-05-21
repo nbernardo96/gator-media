@@ -43,24 +43,29 @@ exports.submitIndex = (req, res, next) =>{
 
 //show the detail in each post
 exports.showDetail = (req, res, next)  => {
-	return Image.findOne({
-		where: {id: req.params.media_id}
-	}).then(media => {
-		let currentItem = new Buffer(media.data).toString('base64');
-		media.data = currentItem
-		if (req.isAuthenticated()) {
-			res.render('media', {
-				media: media,
-				userID: req.user.name
-			})
-		} else {
-			res.render('media', {
-				media: media,
-				userID: ""
-			})
-		}}).catch(e => {
-		console.log(e);
-	})
+    return Image.findOne({
+     where: {id: req.params.media_id}
+    }).then(media => {
+     db.query('SELECT categoryName FROM sys.categories_table', function (error, results, fields) {
+      categories= results
+      let currentItem = new Buffer(media.data).toString('base64');
+      media.data = currentItem;
+      if (req.isAuthenticated()) {
+       res.render('media', {
+        media: media,
+        user: req.user,
+        category: categories
+       })
+      } else {
+       res.render('media', {
+        media: media,
+        user: "",
+        category: categories
+       })
+      }
+     })}).catch(e => {
+     console.log(e);
+    })
 }
 
 
