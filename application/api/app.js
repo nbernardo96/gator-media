@@ -67,7 +67,8 @@ app.use('/admin', adminRouter);
 
 
 // catch 404 and forward to error handler
-app.use(function(req, res, next) {
+app.use('*', function(req, res, next) {
+  res.sendFile(__dirname+'/public/error.ejs'); 
   next(createError(404));
 });
 
