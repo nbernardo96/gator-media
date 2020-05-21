@@ -68,7 +68,7 @@
     color: rgb(77, 77, 77);
 }
 
-@media (max-width: 1630px) {
+@media (max-width: 1638px) {
     .navbar-nav > li > form {
         margin-left: 0px;
     }
@@ -86,9 +86,15 @@
     }
 }
 
-@media (max-width: 1045px) {
+@media (max-width: 1053px) {
     .navbar-link {
         margin-left: 5px !important;
+    }
+}
+
+@media (max-width: 996px) {
+    .navbar-link {
+        margin-left: -10px !important;
     }
 }
 
@@ -133,7 +139,7 @@
 
     .sell-btn {
         margin-top: 7px;
-        margin-left: 5px !important;
+        margin-left: -7px !important;
     }
 }
 
