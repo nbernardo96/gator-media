@@ -82,7 +82,7 @@
     </div>
         <div class="container-home">
             <% for(var i=0; i<item.length; i++) {%>
-                <% if(title == "" && searchCate == "All categories") { %>
+                <% if(title == "" && searchCate == "All categories" && item[i].status == "Approved") { %>
                             <div class="card card-posts" style="width: 18rem;">
                                 <a href="/media/<%= item[i].id %>" target="_blank">
                                     <img src="data:image/jpg;base64, <%- item[i].data %>" alt=<%= item[i].category %> width="287" height="200">
@@ -94,7 +94,7 @@
                                 </div>
                             </div>
                 <%} else if(title == "" && searchCate != "All categories"){ %>
-                    <% if(item[i].category == searchCate) { %>
+                    <% if(item[i].category == searchCate && item[i].status == "Approved") { %>
                         <p> </p>
                             <div class="card card-posts" style="width: 18rem;">
                                 <a href="/media/<%= item[i].id %>" target="_blank">
@@ -107,7 +107,7 @@
                                 </div>
                             </div>
                     <% } %>
-                <% } else if(item[i].category == searchCate){ %>
+                <% } else if(item[i].category == searchCate && item[i].status == "Approved"){ %>
                     <p> </p>
                         <div class="card card-posts" style="width: 18rem;">
                             <a href="/media/<%= item[i].id %>" target="_blank">
