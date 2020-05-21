@@ -68,7 +68,6 @@ exports.showDetail = (req, res, next)  => {
     })
    }
 
-
 //send message to the post owner from the "buyer"
 exports.contactOwner = (req, res, next) =>{
 	db.query('SELECT MAX(message_id) as id FROM sys.messages_table', function (error, results, fields) {
