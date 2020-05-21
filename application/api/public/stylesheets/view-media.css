@@ -52,7 +52,7 @@ img {
     margin-top: 10%;
 }
 
-.download-btn {
+p > a > button {
     width: 140px;
 
     border-radius: 15px;
@@ -62,7 +62,7 @@ img {
     background: transparent;
 }
 
-.download-btn:hover {
+p > a > button:hover {
     background: rgb(22, 226, 22);
     color: white;
 }
