@@ -93,7 +93,7 @@
         <p>
         <% if (media.isFree == "True") { %>
             <a href="data:image/jpg;base64, <%- media.data %>" download=<%= media.name %>>
-                <button type="button">Download </button>
+                <button class="download-btn" type="button">Download </button>
             </a>
         <% } else if(media.isFree == "False"){ %>
             <button class="contact-btn button" data-modal="modalOne" style="background: rgb(167, 238, 170);">Contact Seller</button>

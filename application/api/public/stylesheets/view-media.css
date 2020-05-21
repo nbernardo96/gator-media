@@ -51,3 +51,18 @@ img {
 .media-img {
     margin-top: 10%;
 }
+
+.download-btn {
+    width: 140px;
+
+    border-radius: 15px;
+    border-color: rgb(22, 226, 22);
+
+    color: rgb(24, 201, 24);
+    background: transparent;
+}
+
+.download-btn:hover {
+    background: rgb(22, 226, 22);
+    color: white;
+}
