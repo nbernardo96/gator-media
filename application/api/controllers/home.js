@@ -51,12 +51,12 @@ exports.showDetail = (req, res, next)  => {
 		if (req.isAuthenticated()) {
 			res.render('media', {
 				media: media,
-				userID: req.user.name
+				user: req.user
 			})
 		} else {
 			res.render('media', {
 				media: media,
-				userID: ""
+				user: ""
 			})
 		}}).catch(e => {
 		console.log(e);
