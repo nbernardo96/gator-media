@@ -12,13 +12,24 @@
 
     <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/css/bootstrap-select.min.css">
- 
+
 <!-- Latest compiled and minified JavaScript -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/js/bootstrap-select.min.js"></script>
- 
+
 <!-- (Optional) Latest compiled and minified JavaScript translation files -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/js/i18n/defaults-*.min.js"></script>
 
+
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-167318101-1"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-167318101-1');
+    </script>
 
   </head>
   <body>
@@ -65,7 +76,7 @@
                             </li>
                             <li class="nav-item">
                                 <form action="/logout?_method=DELETE" method="POST" class="btn btn-outline-light mx-4 navbar-link">
-                                    <button class="logout-btn" type="submit" onclick="logoutMessage()"> 
+                                    <button class="logout-btn" type="submit" onclick="logoutMessage()">
                                     <a action='/logout'>Logout</a>
                                     </button>
                                 </form>
@@ -78,7 +89,7 @@
     <div class="site-header">
         <h5>SFSU Software Engineering Project CSC 648-848, Spring 2020, For Demonstration Use Only</h5>
     </div>
-        
+
     </div>
         <div class="container-home">
             <% for(var i=0; i<item.length; i++) {%>
