@@ -40,7 +40,7 @@
     "method-override": "^2.3.5",
     "morgan": "^1.6.1",
     "mysql": "^2.9.0",
-    "nconf": "^0.8.2",
+    "nconf": "^0.11.4",
     "passport": "^0.3.2",
     "passport-facebook": "^2.0.0",
     "passport-facebook-token": "3.3.0",
