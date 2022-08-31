@@ -48,7 +48,7 @@
     "passport-local": "^1.0.0",
     "passport-twitter": "^1.0.3",
     "pg": "^4.4.3",
-    "pm2": "^1.0.0",
+    "pm2": "^5.2.0",
     "proxyquire": "^1.7.3",
     "qs": "6.2.3",
     "request": "2.75.0",
